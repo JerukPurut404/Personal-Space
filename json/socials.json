@@ -1,0 +1,28 @@
+{
+  "socials": {
+    "type": "div",
+    "className": "content__menu",
+    "links": [
+      {
+        "href": "mailto:privateduck@renn.es",
+        "iconSrc": "media/mail.svg",
+        "iconAlt": "mail icon"
+      },
+      {
+        "href": "https://github.com/JerukPurut404",
+        "iconSrc": "media/github.svg",
+        "iconAlt": "github icon"
+      },
+      {
+        "href": "https://anilist.co/user/JerukPurut/",
+        "iconSrc": "media/anilist.svg",
+        "iconAlt": "Anilist icon"
+      },
+      {
+        "href": "https://www.linkedin.com/in/e-van-aubel",
+        "iconSrc": "media/linkedin.svg",
+        "iconAlt": "linkedin icon"
+      }
+    ]
+  }
+}

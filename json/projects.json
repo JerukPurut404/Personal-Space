@@ -1,0 +1,56 @@
+{
+  "projects": [
+    {
+      "title": {
+        "en": "National Videogame Museum Redesign Website.",
+        "nl": "National Videogame Museum Herontwerp Website.",
+        "id": "Desain Ulang Situs Web Museum Videogame Nasional."
+      },
+      "links": [
+        {
+          "type": "GitHub",
+          "url": "https://github.com/JerukPurut404/EindOpdrachtVGM",
+          "icon": "github.svg"
+        },
+        {
+          "type": "Website",
+          "url": "https://35023.hosts1.ma-cloud.nl/EindOpdrachtVGM/Eugene's_folder/index.html",
+          "icon": "globe.svg"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Discontinued 9292chan",
+        "nl": "Stopgezette 9292chan",
+        "id": "Dihentikan 9292chan"
+      },
+      "links": [
+        {
+          "type": "GitHub",
+          "url": "https://github.com/JerukPurut404/9292chan",
+          "icon": "github.svg"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Based Dictionary",
+        "nl": "Based Woordenboek",
+        "id": "Kamus Based"
+      },
+      "links": [
+        {
+          "type": "GitHub",
+          "url": "https://github.com/JerukPurut404/BasedDictionary",
+          "icon": "github.svg"
+        },
+        {
+          "type": "Website",
+          "url": "https://35023.hosts1.ma-cloud.nl/baseddict/",
+          "icon": "globe.svg"
+        }
+      ]
+    }
+  ]
+}

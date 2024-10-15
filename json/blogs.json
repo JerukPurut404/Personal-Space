@@ -1,0 +1,36 @@
+{
+  "blogs": {
+    "items": [
+      {
+        "class": "blog__list",
+        "href": "blog/drive.php",
+        "text": {
+          "en": "Auto driving in brief",
+          "nl": "Auto rijden in het kort",
+          "id": "Mengemudi mobil secara singkat"
+        },
+        "subtext": {
+          "en": "A short introduction about automating control systems.",
+          "nl": "Een korte inleiding over het automatiseren van controlesystemen.",
+          "id": "Pengantar singkat tentang sistem kontrol otomatis."
+        },
+        "date": "2023-05-10"
+      },
+      {
+        "class": "blog__list",
+        "href": "blog/ctf.php",
+        "text": {
+          "en": "I'm done with the CTF",
+          "nl": "Ik ben klaar met de CTF",
+          "id": "Saya menyelesaikan CTF"
+        },
+        "subtext": {
+          "en": "Report of my recent challenge to complete a Capture The Flag (CTF) for WordPress.",
+          "nl": "Verslag van mijn recente uitdaging om een Capture The Flag (CTF) voor WordPress te voltooien.",
+          "id": "Laporan tentang tantangan saya baru-baru ini untuk menyelesaikan Capture The Flag (CTF) untuk WordPress."
+        },
+        "date": "2023-05-15"
+      }
+    ]
+  }
+}
