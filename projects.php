@@ -14,7 +14,8 @@ function getCurrentLang() {
       return $_COOKIE['preferred_lang'];
   }
   
-}
+  return 'en';
+} 
 
 $currentLang = getCurrentLang();
 $_SESSION['lang'] = $currentLang;
@@ -53,24 +54,27 @@ $_SESSION['lang'] = $currentLang;
             $json = file_get_contents('json/projects.json');
 
             if ($json === false) {
-              die('Error reading the JSON file');
+                die('Error reading the JSON file');
             }
 
             $json_data = json_decode($json, true); 
-            
+                
             if ($json_data === null) {
-              die('Error decoding the JSON file');
+                die('Error decoding the JSON file');
             }
 
             foreach ($json_data['projects'] as $project) {
-              echo "<ul class='post__lists'>";
-              echo "<section class='post__icons'>";
-              foreach ($project['links'] as $link) {
-                echo "<li class='post__list'> <a href='" . htmlspecialchars($link['url']) . "'><img class='icon__svg' src='media/" . htmlspecialchars($link['icon']) . "' alt='" . htmlspecialchars($link['type']) . " icon'></a></li>";
-              }
-              echo "</section>";
-              echo "<li class='post__list'>" . htmlspecialchars($project['title'][$currentLang]) . "</li>";
-              echo "</ul>";
+                echo "<ul class='post__lists'>";
+                echo "<section class='post__icons'>";
+                foreach ($project['links'] as $link) {
+                  echo "<li class='post__list'> <a href='" . htmlspecialchars($link['url']) . "'><img class='icon__svg' src='media/" . htmlspecialchars($link['icon']) . "' alt='" . htmlspecialchars($link['type']) . " icon'></a></li>";
+                }
+                echo "</section>";
+                
+                // Check if the translation exists, fall back to English if not
+                $title = isset($project['title'][$currentLang]) ? $project['title'][$currentLang] : $project['title']['en'];
+                echo "<li class='post__list'>" . htmlspecialchars($title) . "</li>";
+                echo "</ul>";
             }
             ?>
           </div>

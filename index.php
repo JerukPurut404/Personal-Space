@@ -19,7 +19,7 @@ $_SESSION['lang'] = $currentLang;
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['lang'])) {
     $lang = $_GET['lang'];
     setcookie('preferred_lang', $lang, time() + 60*60*24*30);
-    header("Location: index.php?lang=$lang");
+    header("Location: index.php");
         exit;
 }
 ?>
