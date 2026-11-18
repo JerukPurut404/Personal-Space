@@ -1,0 +1,24 @@
+evanaubel.nl {
+    root * /var/www/html
+    encode zstd gzip
+
+    # FastCGI to PHP-FPM container
+    php_fastcgi php:9000
+
+    # Serve static files
+    file_server
+
+    # Block access to internal, source, and markdown files
+    @private {
+        path /json/*
+        path /src/*
+        path /halted/*
+        path /admin/includes/*
+        path *.md
+        path *.yml
+        path *.json
+        path /Caddyfile*
+        path /.git*
+    }
+    respond @private "Access Denied" 403
+}

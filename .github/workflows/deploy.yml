@@ -1,0 +1,25 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main  # Change to master if your default branch is named master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd ${{ secrets.VPS_TARGET_DIR }}
+            git stash
+            git pull origin main
+            git stash pop || true
+            chown -R 82:82 json/ media/ blog/markdowns/ admin/
+            chmod -R 775 json/ media/ blog/markdowns/
+            docker compose up -d

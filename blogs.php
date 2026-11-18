@@ -7,14 +7,9 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 function getCurrentLang() {
-  if (isset($_GET['lang'])) {
-      return $_GET['lang'];
-  }
-  
-  if (isset($_COOKIE['preferred_lang'])) {
-      return $_COOKIE['preferred_lang'];
-  }
-  
+    $allowed = ['en', 'nl', 'id'];
+    $lang = $_GET['lang'] ?? $_COOKIE['preferred_lang'] ?? 'en';
+    return in_array($lang, $allowed, true) ? $lang : 'en';
 }
 
 $currentLang = getCurrentLang();
@@ -22,7 +17,7 @@ $_SESSION['lang'] = $currentLang;
 ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo isset($_GET['lang']) ? $_GET['lang'] : 'en'; ?>">
+<html lang="<?php echo htmlspecialchars($currentLang, ENT_QUOTES, 'UTF-8'); ?>">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,6 +43,7 @@ $_SESSION['lang'] = $currentLang;
           <li>
             <a href="blogs.php"><?php echo t('Blogs')?></a>
           </li>
+          <li><a href="gallery.php"><?php echo t('Gallery'); ?></a></li>
         </ul>
       </nav>
     </header>
@@ -76,10 +72,12 @@ $_SESSION['lang'] = $currentLang;
             // Generate HTML output based on selected language
             $html = "<ul class='post__lists'>";
             foreach ($json_data['blogs']['items'] as $blogs) {
-                $html .= "<li class='" . $blogs['class'] . "'>";
-                $html .= "<a href='" . $blogs['href'] . "'>" . $blogs['text'][$lang] . "</a>";
-                $html .= "<span class='post__subtext'>" . $blogs['subtext'][$lang] . "</span>";
-                $html .= "<time class='post__date' datetime='" . $blogs['date'] . "'>" . date('Y-m-d', strtotime($blogs['date'])) . "</time>";
+                $text = $blogs['text'][$lang] ?? $blogs['text']['en'];
+                $sub  = $blogs['subtext'][$lang] ?? $blogs['subtext']['en'];
+                $html .= "<li class='" . htmlspecialchars($blogs['class']) . "'>";
+                $html .= "<a href='" . htmlspecialchars($blogs['href']) . "'>" . htmlspecialchars($text) . "</a>";
+                $html .= "<span class='post__subtext'>" . htmlspecialchars($sub) . "</span>";
+                $html .= "<time class='post__date' datetime='" . htmlspecialchars($blogs['date']) . "'>" . date('Y-m-d', strtotime($blogs['date'])) . "</time>";
                 $html .= "</li>";
             }
             $html .= "</ul>";

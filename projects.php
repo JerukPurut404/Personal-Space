@@ -6,22 +6,16 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 function getCurrentLang() {
-  if (isset($_GET['lang'])) {
-      return $_GET['lang'];
-  }
-  
-  if (isset($_COOKIE['preferred_lang'])) {
-      return $_COOKIE['preferred_lang'];
-  }
-  
-  return 'en';
-} 
+    $allowed = ['en', 'nl', 'id'];
+    $lang = $_GET['lang'] ?? $_COOKIE['preferred_lang'] ?? 'en';
+    return in_array($lang, $allowed, true) ? $lang : 'en';
+}
 
 $currentLang = getCurrentLang();
 $_SESSION['lang'] = $currentLang;
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo $currentLang; ?>">
+<html lang="<?php echo htmlspecialchars($currentLang, ENT_QUOTES, 'UTF-8'); ?>">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,6 +35,7 @@ $_SESSION['lang'] = $currentLang;
           <li><a href="about.php"><?php echo t('About'); ?></a></li>
           <li><a href="projects.php"><?php echo t('Projects'); ?></a></li>
           <li><a href="blogs.php"><?php echo t('Blogs'); ?></a></li>
+          <li><a href="gallery.php"><?php echo t('Gallery'); ?></a></li>
         </ul>
       </nav>
     </header>

@@ -2,15 +2,9 @@
 require_once 'src/languages.php';
 
 function getCurrentLang() {
-    if (isset($_GET['lang'])) {
-        return $_GET['lang'];
-    }
-    
-    if (isset($_COOKIE['preferred_lang'])) {
-        return $_COOKIE['preferred_lang'];
-    }
-    
-    return 'en'; 
+    $allowed = ['en', 'nl', 'id'];
+    $lang = $_GET['lang'] ?? $_COOKIE['preferred_lang'] ?? 'en';
+    return in_array($lang, $allowed, true) ? $lang : 'en';
 }
 
 $currentLang = getCurrentLang();
@@ -25,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['lang'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo isset($_GET['lang']) ? $_GET['lang'] : 'en'; ?>">
+<html lang="<?= htmlspecialchars($currentLang) ?>">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,13 +46,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['lang'])) {
           <li>
             <a href="blogs.php"><?php echo t('Blogs')?></a>
           </li>
+          <li><a href="gallery.php">
+            <?php echo t('Gallery'); ?></a>
+          </li>
         </ul>
       </nav>
     </header> 
     <div class="content">
       <main class="content__main">
         <div class="content__div">
-          <img class="profile__picture" src="media/image_proxy.png">
+          <img class="profile__picture" src="media/image_proxy.jpeg">
           <img class="handwriting__svg" src=<?php echo t('media/handwriting/welcome.svg')?> alt="">
           <br>
           <img class="handwriting__svg" src=<?php echo t('media/handwriting/im-e-van-aubel.svg')?> alt="">

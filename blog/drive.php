@@ -6,14 +6,9 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 function getCurrentLang() {
-  if (isset($_GET['lang'])) {
-      return $_GET['lang'];
-  }
-  
-  if (isset($_COOKIE['preferred_lang'])) {
-      return $_COOKIE['preferred_lang'];
-  }
-  
+    $allowed = ['en', 'nl', 'id'];
+    $lang = $_GET['lang'] ?? $_COOKIE['preferred_lang'] ?? 'en';
+    return in_array($lang, $allowed, true) ? $lang : 'en';
 }
 
 $currentLang = getCurrentLang();
