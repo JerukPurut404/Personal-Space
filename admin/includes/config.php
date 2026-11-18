@@ -1,5 +1,5 @@
 <?php
-const ADMIN_PASSWORD_HASH = '$2y$10$7MDz1OjrpGrLEHMZhrrizObU2echDsuKofMsowwEmOYaFeQYgh0lu';
+const ADMIN_PASSWORD_HASH = '$2y$10$dd.jcMPb2QmkZPJU8ZcjnuMoCEKfuAFaju6fZS/NDvnvudHvO81Im';
 
 const LANGS      = ['en' => 'English', 'nl' => 'Nederlands', 'id' => 'Bahasa Indonesia'];
 const IMAGE_EXT  = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'];
