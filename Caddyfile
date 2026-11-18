@@ -1,4 +1,4 @@
-evanaubel.nl {
+evanaubel.nl, www.evanaubel.nl {
     root * /var/www/html
     encode zstd gzip
 
