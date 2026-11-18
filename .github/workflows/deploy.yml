@@ -20,6 +20,6 @@ jobs:
             git stash
             git pull origin main
             git stash pop || true
-            chown -R 82:82 json/ media/ blog/markdowns/ admin/
-            chmod -R 775 json/ media/ blog/markdowns/
+            chown -R 82:82 json/ media/ blog/ admin/
+            chmod -R 775 json/ media/ blog/
             docker compose up -d
